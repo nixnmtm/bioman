@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 # the lines should be grouped by queries (as usual, do sort file.hmm if not)
 
 import string
@@ -8,8 +8,8 @@ import sys
 
 parser = argparse.ArgumentParser(description="Returns a 'Best Hits' filtered HMM tab output")
 parser.add_argument("HMMERres", help="the HMMer tab output")
-parser.add_argument("-c", "--column", type=int, default=14)
-parser.add_argument("-s", "--minscore", type=float, default=25, help="the min score required to keep the hit")
+parser.add_argument("-c", "--column", type=int, default=14, help="default is 14, i.e. the p/ dom score")
+parser.add_argument("-s", "--minscore", type=float, default=25, help="the min score required to keep the hit, default is 25")
 args = parser.parse_args()
 
 HMMERres = args.HMMERres
