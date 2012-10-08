@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 # counts a motif (arg1) with overlaps in a fasta file (arg2)
 import sys
 from Bio.Seq import Seq
@@ -23,7 +23,6 @@ def countMotif(myseqrecord, mymotif):
 			
 for seq_record in SeqIO.parse(handle, "fasta"):
 	momoc=momoc + countMotif(seq_record,momo)
-	
 handle.close()
 
 print "motif",theMotif, "found", momoc, "times in the", fastafile, "file"
