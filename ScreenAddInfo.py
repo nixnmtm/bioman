@@ -1,10 +1,14 @@
 #!/usr/bin/python
+# Screen a file (arg 1) for words in mapping file (arg2) column 1
+# and add after a chosen separator (default is <tab>) the text written in the
+# other columns (or null value if nothing).
+
 import string
 import sys
 import re
 import argparse
 
-parser = argparse.ArgumentParser(description="Screen an input file (arg 1) and add from a mapping file (arg2) a value (c2) if valu in c1 is found")
+parser = argparse.ArgumentParser(description="Screen a file (arg 1) for words in mapping file (arg2) column 1 and add after a chosen separator (default is <tab>) the text written in the other columns (or null value if nothing)")
 parser.add_argument("infile", help="the file that should be completed")
 parser.add_argument("mapfile", help="the mapping table used to add information")
 parser.add_argument("-s", "--separator", default="\t", help="the separator used to add the complement information, default is <tab>")
