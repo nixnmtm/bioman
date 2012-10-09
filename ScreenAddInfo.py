@@ -32,7 +32,7 @@ IDs = ids.readlines()
 mappingIndex={}
 for couple in IDs:
 	c1=couple.split()[0]
-	c2=couple.split()[1:]
+	c2=" ".join(couple.split()[1:])
 	# print c1,c2
 	if c1 not in mappingIndex:
 		mappingIndex[c1]=c2
@@ -50,9 +50,10 @@ for ligne in lignes:
 	description = []
 	for mot in (re.findall(r'[\w.:]+',ligne)):
 		if mot in mappingIndex:
-			description.append(" ".join(mappingIndex[mot]))
+			if mappingIndex[mot]:
+				description.append(str(mappingIndex[mot]))
 	if not description:
-		description.append(sep)
+		description.append(navalue)
 	print ligne.strip() + sep + ", ".join(description)
 
 handle.close()
