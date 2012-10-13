@@ -1,4 +1,8 @@
 #!/usr/bin/python
+### this is galaxy code
+### https://bitbucket.org/peterjc/galaxy-central/src/5cefd5d5536e/tools/ncbi_blast_plus/blast.py
+
+
 import sys
 
 
