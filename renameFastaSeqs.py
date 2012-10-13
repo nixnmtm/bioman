@@ -1,15 +1,28 @@
 #!/usr/bin/python
-
 import sys
+import math
 
-fastafile, prefix = sys.argv
-input = open(fastafile)
-output = open("".join(fastafile.split('.')[:-1]) + prefix + ".fasta", 'w')
+prog, fastafile, prefix = sys.argv
+print "Sequences are being renamed: >"+prefix+"_1 ...etc"
+
+try:
+	input = open(fastafile)
+except IOError, e:
+	print "File not found: ", fastafile
+        pass
+
+outname = "".join(fastafile.split('.')[:-1]) + "."+prefix + ".fasta"
+output = open(outname, 'w')
 
 count = 1
-for line in input:
-    if line.startswith('>'):
-        output.write('>%s_%d\n' % (prefix, count))
-        count += 1
-    else:
-        output.write(line)
+# markup = range(0,10**12,10**7)
+for line in input.readlines():
+	if line.startswith('>'):
+		output.write('>%s_%d\n' % (prefix, count))
+		count += 1
+	else:
+		output.write(line)
+
+input.close()
+output.close()
+print "New fasta file written: ", outname
