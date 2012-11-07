@@ -13,7 +13,9 @@ args = parser.parse_args()
 
 fa = args.fafile
 sep = args.separator
-if (args.normalize == ('True' or str(1))):
+n = args.normalize.lower()
+
+if (n == 'true' or n == 't' or n == '1' or n == 'yes' or n == 'y'):
 	norm = True
 else:
 	norm = False
