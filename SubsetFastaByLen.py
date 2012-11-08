@@ -1,4 +1,5 @@
 #!/usr/bin/python
+### needs Biopython
 ### extracts sequences from a fasta file (arg 1)
 ### whose length is sup or equal to arg 2
 ### and inf or equal arg3
