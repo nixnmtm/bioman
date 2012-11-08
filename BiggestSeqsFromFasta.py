@@ -1,5 +1,5 @@
 #!/usr/bin/python
-### Extracts the N (default is N=100) sequences from a fasta file 
+### Extracts the N longest (default is N=100) sequences from a fasta file 
 ### needs BioPython
 
 import string
@@ -44,4 +44,3 @@ for i in seqsOrd[0:int(Nseqs)]:
 	SeqIO.write(i[0], handle, "fasta")
 handle.close()
 
-	
