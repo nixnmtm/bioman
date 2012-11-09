@@ -1,13 +1,22 @@
-## collection of functions intended to process fast(a/q) files
-## as speed as possible
 import re
 
-def parseFastaHeader(rawFastaHeader):
-	""" read a header and return id and descr """
-	h = rawFastaHeader[1:].strip()
-	sID = h[:h.find(" ")]
-	sDEF= h[h.find(" ")+1:]
-	return sID, sDEF
+class FastRecord:
+"""collection of functions intended to process fast(a/q) files
+as fast as possible"""
+
+	def __init__(self, id, description, sequence):
+		self.id = id
+		self.description = description
+		self.sequence = sequence
+
+	@classmethod
+	def parseFastaHeader(rawFastaHeader):
+		""" read a header and return id and descr """
+		h = rawFastaHeader[1:].strip()
+		sID = h[:h.find(" ")]
+		sDEF= h[h.find(" ")+1:]
+		return sID, sDEF
+
 
 def fasta2dict(fastafile):
 	"""
