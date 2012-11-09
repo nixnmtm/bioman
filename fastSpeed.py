@@ -1,5 +1,6 @@
 ## collection of functions intended to process fast(a/q) files
 ## as speed as possible
+import re
 
 def parseFastaHeader(rawFastaHeader):
 	""" read a header and return id and descr """
