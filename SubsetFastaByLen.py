@@ -1,37 +1,125 @@
 #!/usr/bin/python
-### needs Biopython
-### extracts sequences from a fasta file (arg 1)
-### whose length is sup or equal to arg 2
-### and inf or equal arg3
+# import libraries
+import argparse
+import os
+import re
 
-import string
-import sys
-from Bio import SeqIO
-from StringIO import StringIO
 
-fastafile = sys.argv[1]
-inf = int(sys.argv[2])
-sup = int(sys.argv[3])
+parser = argparse.ArgumentParser(description="Filter out seqs which length are out of given limits")
+parser.add_argument("fafile", help="a fasta file")
+parser.add_argument("-m", "--min", default = 100, help="Minimum sequence length. 0 means there is no limit. Default is 100.")
+parser.add_argument("-M", "--max", default = 0, help="Maximum sequence length. Default is 0 which means there is no limit.")
+parser.add_argument("-s", "--seqLineLength", default = 80, help="Max elements per sequence line.")
+args = parser.parse_args()
 
-bank=[]
+fastapath = args.fafile
+mini = int(args.min)
+maxi = int(args.max)
+sll = int(args.seqLineLength)
 
-handle = open(fastafile)
-for seq_record in SeqIO.parse(handle, "fasta"):
-	bank.append(seq_record)
+def main():
+	fafile = open(fastapath)
+	if maxi==0:
+		filterMinAndPrint(fafile,mini)
+	elif mini==0:
+		filterMaxAndPrint(fafile,maxi)
+	elif mini==0 and maxi==0:
+		stop("min=0 and max=0: why do you use this program if you don't filter anything?")
+	else :
+		filterAndPrint(fafile, mini, maxi)
+	fafile.close()
 
-handle.close()
 
-mySubset=[]
+def formatseq(seq,linelength):
+        """
+        Take a seq (without linebreak) and insert line breaks
+        after every linelength element
+        """
+        return re.sub("(.{%s})" % linelength, "\\1\n", seq, re.DOTALL)
 
-for i in bank:
-	for j in req:
-		if (i.id==j):
-			mySubset.append(i)
+def filterMinAndPrint(fastahandle,minLen):
+	"""
+	Filters out from a fasta seqs < minLen
+	"""
+	seq_id = fastahandle.next()
+	while (seq_id[0]!=">"):
+		seq_id = fastahandle.next()
+	while True:
+		try:
+			seq = fastahandle.next().strip()
+			line = fastahandle.next()
+			while (line[0]!=">"):
+				seq = seq+line.strip()
+				line = fastahandle.next()
+			#print "actual length= ",len(seq)
+			if len(seq) >= minLen:
+				print seq_id,formatseq(seq,sll)
+			seq_id = line # last loop
+		except StopIteration:
+			break
+	# last line
+	while (line[0]!=">"):
+		seq = seq+line.strip()
+	if len(seq) <= minLen:
+		print seq_id,formatseq(seq,sll)
 
-out_handle = StringIO()
-SeqIO.write(mySubset, out_handle, "fasta")
-fasta_data = out_handle.getvalue()
 
-print fasta_data
+def filterMaxAndPrint(fastahandle,maxLen):
+	"""
+	Filters out from a fasta seqs > maxLen
+	"""
+	seq_id = fastahandle.next()
+	while (seq_id[0]!=">"):  
+		seq_id = fastahandle.next()
+	while True:
+		try:
+			seq = fastahandle.next().strip()
+			line = fastahandle.next()
+			while (line[0]!=">"):  
+				seq = seq+line.strip() 
+				line = fastahandle.next()
+			#print "actual length= ",len(seq)
+			if len(seq) <= maxLen:
+				print seq_id,formatseq(seq,sll)
+			seq_id = line # last loop
+		except StopIteration:
+			break
+	# last line
+	while (line[0]!=">"):
+		seq = seq+line.strip()
+	if len(seq) >= maxLen:
+		print seq_id,formatseq(seq,sll)
+
+
+def filterAndPrint(fastahandle,minLen,maxLen):
+	"""
+	Filters out from a fasta seqs < minLen
+	and seqs > maxLen
+	"""
+	seq_id = fastahandle.next()
+	while (seq_id[0]!=">"):  
+		seq_id = fastahandle.next()
+	while True:
+		try:
+			seq = fastahandle.next().strip()
+			line = fastahandle.next()
+			while (line[0]!=">"):  
+				seq = seq+line.strip() 
+				line = fastahandle.next()
+			#print "actual length= ",len(seq)
+			if len(seq) >= minLen and len(seq) <= maxLen:
+				print seq_id,formatseq(seq,sll)
+			seq_id = line # last loop
+		except StopIteration:
+			break
+	# last line
+	while (line[0]!=">"):
+		seq = seq+line.strip()
+	if len(seq) <= minLen and len(seq) >= maxLen:
+		print seq_id,formatseq(seq,sll)
+
+
+if __name__ == '__main__':
+        main()
 
 
