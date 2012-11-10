@@ -1,33 +1,66 @@
 import re
+import collection
 
-class FastRecord:
-"""collection of functions intended to process fast(a/q) files
-as fast as possible"""
+class FastaRecord:
+	"""
+	collection of functions intended to process a fasta entry
+	as fast as possible
+	"""
 
-	def __init__(self, id, description, sequence):
-		self.id = id
-		self.description = description
-		self.sequence = sequence
+	def __init__(self, header, sequence):
+		self.head = header
+		self.seq = sequence
 
-	@classmethod
-	def parseFastaHeader(rawFastaHeader):
+	def __str__(self):
+		return self.head + '\n' + self.seq
+#		return "Fasta record: " + self.parseFastaHeader()[0]
+
+	def parseFastaHeader(self):
 		""" read a header and return id and descr """
-		h = rawFastaHeader[1:].strip()
+		h = self.head[1:].strip()
 		sID = h[:h.find(" ")]
 		sDEF= h[h.find(" ")+1:]
 		return sID, sDEF
 
+	def seqLen(self):
+		return len(self.seq)
 
+	def gc(self):
+		return round((100 * ((self.seq.count('g') +
+					self.seq.count('c'))) /
+				len(self.seq)),
+				2)
+
+	def is_nuc(self):
+		pass
+
+	
+class FastqRecord:
+	"""
+	collection of functions intended to process a fastq entry
+	as fast as possible
+	"""
+	pass
+
+class SeqCollection(collections.OrderedDict):
+	"""
+	collect seq entries 
+	"""
+	def __init__(self):
+		self.
+		
+	
+	
 def fasta2dict(fastafile):
 	"""
-		reads a fasta file and return a dict
-		in which keys are sequence IDs, and
-		values are a tuple of description and
-		actual sequence
+	reads a fasta file and return a dict
+	in which keys are sequence IDs, and
+	values are a tuple of description and
+	actual sequence
 	"""
 	handle = open(fastafile,'r')
 
-	seqs={}
+	seqs = collections.OrderedDict()
 
 	seq_id = handle.next()
 	while (seq_id[0]!=">"):
