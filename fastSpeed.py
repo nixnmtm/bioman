@@ -42,20 +42,13 @@ class FastqRecord:
 	"""
 
 	def __init__(self, header, sequence, qual):
-		self.head = header
-		self.seq = sequence.upper()
+		self.head = header.strip()
+		self.seq = sequence.strip().upper()
 		q = r''
-		self.qual = q + qual
+		self.qual = (q + qual).strip()
 
 	def __str__(self):
 		return self.head + '\n' + self.seq + '\n+\n' + self.qual
-
-	def parseFastqHeader(self):
-		""" read a header and return id and descr """
-		h = self.head[1:].strip()
-		sID = h[:h.find(" ")]
-		sDEF= h[h.find(" ")+1:]
-		return sID, sDEF
 
 	def seqLen(self):
 		return len(self.seq)
@@ -66,17 +59,38 @@ class FastqRecord:
 				len(self.seq)),
 				2)
 
+	def toFasta(self):
+		return '>' + self.head[1:].strip() + '\n' + self.seq
+
 	def is_nuc(self):
 		pass
-
 
 class SeqCollection(collections.OrderedDict):
 	"""
 	collect seq entries 
 	"""
-	def __init__(self):
+	def __init__(self, mol='nuc'):
 		pass	
+
+def fastqIterOnce(fastqhandle):
+	h = fastqhandle.readline()
+	s = fastqhandle.readline()
+	fastqhandle.readline()
+	q = fastqhandle.readline()
+	return FastqRecord(h,s,q)
 	
+def parseHeader(rawHeader):
+	""" read a header and return id and descr """
+	h = rawHeader[1:].strip()
+	pos = h.find(" ")
+	sID = h[:pos]
+	if pos == -1:
+		sDEF= ''
+	else:
+		sDEF= h[h.find(" ")+1:]
+	return sID, sDEF
+
+
 	
 def fasta2dict(fastafile):
 	"""
@@ -99,7 +113,7 @@ def fasta2dict(fastafile):
 			while (line[0]!=">"):
 				seq = seq+line.strip()
 				line = handle.next()
-			sid,sdef = parseFastaHeader(seq_id)
+			sid,sdef = parseHeader(seq_id)
 			seqs[sid]=sdef,seq
 			seq_id = line # last loop
 		except StopIteration:
@@ -107,7 +121,7 @@ def fasta2dict(fastafile):
         # last line
 	while (line[0]!=">"):
 		seq = seq+line.strip()
-	sid,sdef = parseFastaHeader(seq_id)
+	sid,sdef = parseHeader(seq_id)
 	seqs[sid]=sdef,seq
 
 	handle.close()
