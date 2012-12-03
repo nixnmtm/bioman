@@ -4,7 +4,7 @@ import screed
 import khmer
 import os
 
-parser = argparse.ArgumentParser(description="Open a fasta file (arg 1) and count for each sequence the k-mer ferquencies (given a k size in second argument)")
+parser = argparse.ArgumentParser(description="Open a fasta file (arg 1) and count for each sequence the k-mer frequencies (given a k size in second argument)")
 parser.add_argument("fafile", help="a fasta file")
 parser.add_argument("ksize", help="the k number. Be aware that the dimension of the output table is n_entries x 4^k.")
 parser.add_argument("-s", "--separator", default = "\t", help="the separator to make the output table, default is <tab>")
