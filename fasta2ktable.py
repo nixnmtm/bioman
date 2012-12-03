@@ -33,7 +33,7 @@ def main():
 
 	makeKmerArray(fadb,int(args.ksize),norm)
 
-def makeKmerArray(screedb,ksize,normamize):
+def makeKmerArray(screedb,ksize,normalize):
 	"""
 	This takes a screedb file and a k-mer size in inputs,
 	and print the ktable.
