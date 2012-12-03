@@ -3,6 +3,7 @@ import argparse
 import screed
 import khmer
 import os
+import sys
 
 parser = argparse.ArgumentParser(description="Open a fasta file (arg 1) and count for each sequence the k-mer frequencies (given a k size in second argument)")
 parser.add_argument("fafile", help="a fasta file")
@@ -13,7 +14,9 @@ args = parser.parse_args()
 
 fa = args.fafile
 sep = args.separator
-n = args.normalize.lower()
+n = args.normalize
+if n != False:
+	n = n.lower()
 
 if (n == 'true' or n == 't' or n == '1' or n == 'yes' or n == 'y'):
 	norm = True
@@ -56,7 +59,7 @@ def makeKmerArray(screedb,ksize,normamize):
 			kmersNorm = [float(x)/tot for x in kmers]
 			#print kmersNorm
 			for ele in kmersNorm:
-				print '\t' + '%f' % (ele),
+				sys.stdout.write(sep + '%f' % (ele))
 			print
 
 
@@ -64,9 +67,9 @@ def makeKmerArray(screedb,ksize,normamize):
 		for record in screedb.itervalues():
 			ktable.clear()
 			ktable.consume(str(record.sequence))
-			print record.name,
+			sys.stdout.write(record.name)
 			for i in range(0, ktable.n_entries()):
-			    print sep + str(ktable.get(i)),
+			    sys.stdout.write(sep + str(ktable.get(i)))
 			print
 
 
