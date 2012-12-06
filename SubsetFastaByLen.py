@@ -15,7 +15,7 @@ args = parser.parse_args()
 fastapath = args.fafile
 mini = int(args.min)
 maxi = int(args.max)
-sll = int(args.seqLineLength)
+sll = int(args.seqLineLength)-1
 
 def main():
 	fafile = open(fastapath)
@@ -60,7 +60,7 @@ def filterMinAndPrint(fastahandle,minLen):
 	# last line
 	while (line[0]!=">"):
 		seq = seq+line.strip()
-	if len(seq) <= minLen:
+	if len(seq) >= minLen:
 		print seq_id,formatseq(seq,sll)
 
 
@@ -87,7 +87,7 @@ def filterMaxAndPrint(fastahandle,maxLen):
 	# last line
 	while (line[0]!=">"):
 		seq = seq+line.strip()
-	if len(seq) >= maxLen:
+	if len(seq) <= maxLen:
 		print seq_id,formatseq(seq,sll)
 
 
@@ -115,7 +115,7 @@ def filterAndPrint(fastahandle,minLen,maxLen):
 	# last line
 	while (line[0]!=">"):
 		seq = seq+line.strip()
-	if len(seq) <= minLen and len(seq) >= maxLen:
+	if len(seq) >= minLen and len(seq) <= maxLen:
 		print seq_id,formatseq(seq,sll)
 
 
