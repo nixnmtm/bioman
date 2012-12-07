@@ -142,7 +142,7 @@ def formatseq(seq,linelength):
 	Take a seq (without linebreak) and insert line breaks
 	after every linelength element
 	"""
-        return re.sub("(.{%s})" % linelength, "\\1\n", seq, re.DOTALL)
+	return '\n'.join(seq[i:i+linelength] for i in xrange(0, len(seq), linelength))
 
 
 def validateDNA_AA(seq, alphabet='dna'):

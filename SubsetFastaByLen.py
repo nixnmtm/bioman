@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# import libraries
 import argparse
 import os
 import re
@@ -15,7 +14,7 @@ args = parser.parse_args()
 fastapath = args.fafile
 mini = int(args.min)
 maxi = int(args.max)
-sll = int(args.seqLineLength)-1
+sll = int(args.seqLineLength)
 
 def main():
 	fafile = open(fastapath)
@@ -35,7 +34,7 @@ def formatseq(seq,linelength):
         Take a seq (without linebreak) and insert line breaks
         after every linelength element
         """
-        return re.sub("(.{%s})" % linelength, "\\1\n", seq, re.DOTALL)
+	return '\n'.join(seq[i:i+linelength] for i in xrange(0, len(seq), linelength))
 
 def filterMinAndPrint(fastahandle,minLen):
 	"""
