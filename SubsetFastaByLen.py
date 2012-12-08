@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description="Filter out seqs which length are o
 parser.add_argument("fafile", help="a fasta file")
 parser.add_argument("-m", "--min", default = 100, help="Minimum sequence length. 0 means there is no limit. Default is 100.")
 parser.add_argument("-M", "--max", default = 0, help="Maximum sequence length. Default is 0 which means there is no limit.")
-parser.add_argument("-s", "--seqLineLength", default = 80, help="Max elements per sequence line.")
+parser.add_argument("-s", "--seqLineLength", default = 60, help="Max elements per sequence line.")
 args = parser.parse_args()
 
 fastapath = args.fafile
