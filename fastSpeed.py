@@ -119,7 +119,7 @@ def fasta2dict(fastafile):
 		except StopIteration:
 			break
         # last line
-	while (line[0]!=">"):
+	if line[0]!=">":
 		seq = seq+line.strip()
 	sid,sdef = parseHeader(seq_id)
 	seqs[sid]=sdef,seq

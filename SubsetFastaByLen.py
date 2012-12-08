@@ -50,14 +50,13 @@ def filterMinAndPrint(fastahandle,minLen):
 			while (line[0]!=">"):
 				seq = seq+line.strip()
 				line = fastahandle.next()
-			#print "actual length= ",len(seq)
 			if len(seq) >= minLen:
 				print seq_id,formatseq(seq,sll)
 			seq_id = line # last loop
 		except StopIteration:
 			break
 	# last line
-	while (line[0]!=">"):
+	if (line[0]!=">"):
 		seq = seq+line.strip()
 	if len(seq) >= minLen:
 		print seq_id,formatseq(seq,sll)
@@ -84,7 +83,7 @@ def filterMaxAndPrint(fastahandle,maxLen):
 		except StopIteration:
 			break
 	# last line
-	while (line[0]!=">"):
+	if (line[0]!=">"):
 		seq = seq+line.strip()
 	if len(seq) <= maxLen:
 		print seq_id,formatseq(seq,sll)
@@ -112,7 +111,7 @@ def filterAndPrint(fastahandle,minLen,maxLen):
 		except StopIteration:
 			break
 	# last line
-	while (line[0]!=">"):
+	if (line[0]!=">"):
 		seq = seq+line.strip()
 	if len(seq) >= minLen and len(seq) <= maxLen:
 		print seq_id,formatseq(seq,sll)
