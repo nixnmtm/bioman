@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 from collections import Counter
 
