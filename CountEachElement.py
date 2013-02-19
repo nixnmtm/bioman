@@ -21,7 +21,7 @@ for word in mytids:
 	cnt[word] += 1
 
 for i in cnt.keys():
-	print(str(i)+","+str(cnt[i]))
+	print str(cnt[i])+"\t"+str(i)
 
 
 
