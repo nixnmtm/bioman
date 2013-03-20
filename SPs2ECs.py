@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### à utiliser avec python3.1 !
 #	idem blasthits2ECs mais pour les fichiers SPs
 

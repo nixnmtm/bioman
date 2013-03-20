@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Prend en entree un fichier fasta et un fichier .clstr de cd-hit correspondant a ce fasta trie par ordre decroissant (clstr_sort_by.pl)
 # de taille de clusters, ainsi que le nombre de clusters a plusieurs sequences (on peut l'avoir avec plot_len1.pl)
 

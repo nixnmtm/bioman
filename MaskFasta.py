@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### needs BioPython libraries
 ### from a file.fasta and a corresponding file.qual
 ### masks (i.e. replace by "N") the nucleotides below

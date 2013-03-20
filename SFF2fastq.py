@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Generates a fastq file from a 454 SFF file
 
 import sys

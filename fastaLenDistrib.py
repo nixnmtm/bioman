@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Draws an histogramm of sequence lengths
 ### from a fasta file (arg1) , and giving
 ### a number of histo bins (arg2)

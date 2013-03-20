@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Counts several elements in a fasta file:
 ### the nb of sequences, of residues, and the
 ### mean sequence length

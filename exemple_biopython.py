@@ -1,4 +1,4 @@
-from Bio.Seq import Seq
+#!/usr/bin/env python
 from Bio.Alphabet import IUPAC
 bli = Seq("GATCGATGGGCCTATATAGGATCGAAAATCGC", IUPAC.unambiguous_dna) #IUPAC.protein
 for index, letter in enumerate(bli):

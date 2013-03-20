@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Extracts the N longest (default is N=100) sequences from a fasta file 
 ### needs BioPython
 

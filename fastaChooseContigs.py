@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### ne conserve que les genes appartenant a des contigs dans lesquels se trouvent au moins deux genes
 
 import string

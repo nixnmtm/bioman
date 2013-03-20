@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 # print sequences only if they contain
 # a motif (arg1) in a fasta file (arg2)
 import sys

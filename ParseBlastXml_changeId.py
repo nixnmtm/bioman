@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### prend en entree une e-value et un fichier xml
 ### renvoit un fichier xml ne contenant que les hits positifs,
 ### dont la evalue est superieure au seuil et ayant une

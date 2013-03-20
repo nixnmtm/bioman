@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # the lines should be grouped by queries (as usual, do sort file.hmm if not)
 
 import string

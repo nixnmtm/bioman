@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### prend en entree deux fichiers fasta et un seuil (en pourcentage) pour le nombre de N acceptes dans une sequence
 # 	renvoit des sous-fichiers de chacun des deux fichiers fasta ayant la meme distribution de taille de sequences
 #	elimine au passage les queues poly-N et les sequences contenant plus que le pourcentage seuil de N

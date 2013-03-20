@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # output elements in list 1 than are not in list 2
 
 import sys

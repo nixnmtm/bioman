@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Prend en entree un fichier tableau identifiants/EC numbers, un EC number, un fichier fasta et une liste d'identifiants (issus d'un blast)
 # 	pour chaque hit du fichier blast, si la sequenque de la base de donnees a pour EC celui en entree, on ecrit la
 #	sequence query correspondante dans un nouveau fichier fasta du type nom_fasta_entree.EC_entree

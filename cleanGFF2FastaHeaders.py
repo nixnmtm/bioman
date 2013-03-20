@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### from a GFF2fasta.py fasta file output
 ### cleans the header and adds a sequence numbering
 

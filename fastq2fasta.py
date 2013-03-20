@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### reads a fastq file and write a fasta file
 ### if mean sequence quality is below the (arg 2)
 ### treshold.

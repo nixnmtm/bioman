@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### from a file.fasta , removes the leading and
 ### trailing poly "N" and then delete sequences
 ### that contain more than (arg 2) percent of "N" 

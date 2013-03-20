@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### a utiliser avec python3.1 ! (pas directement en executable)
 ### prend en entree un fichier de sortie tableau blast et un fichier avec deux colonnes identifiant/EC 
 #	renvoit un fichier texte donnant le nombre de hits par EC number dans le fichier blast

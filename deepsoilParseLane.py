@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Script pour rajouter le nom du fichier dans l'entete fasta : entete type >bf1.blabla (prend en entree le cat de tous les barefallow)
 #	utile pour le script de matrice de rammcap (il separe les echantillons en fonction de ce qu'il y a avant le premier . dans l'entete fasta
 

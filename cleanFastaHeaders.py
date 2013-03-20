@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### from a fasta file
 ### cleans up the sequences headers removing spaces and adding a "|"
 

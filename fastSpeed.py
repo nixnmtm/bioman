@@ -1,4 +1,4 @@
-import re
+#!/usr/bin/env python
 import collections
 
 class FastaRecord:

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 
 #################################################################################
 # spe2newick transforme l'ecriture 'ligne par ligne' d'un arbre phylogenetique	#

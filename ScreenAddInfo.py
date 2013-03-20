@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # Screen a file (arg 1) for words in mapping file (arg2) column 1
 # and add after a chosen separator (default is <tab>) the text written in the
 # other columns (or null value if nothing).

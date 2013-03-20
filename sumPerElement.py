@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # input file col 1 is a numerci value
 # col2 is an ID 
 

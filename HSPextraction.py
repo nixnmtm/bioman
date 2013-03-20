@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 ##### programm that extracts bank seq ids from
 ##### a blast result default flat file.

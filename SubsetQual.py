@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### program that subsets a qual file giving a subseted
 ### fasta file. This works if the sequence ordering is
 ### preserved between the original fasta, and the 

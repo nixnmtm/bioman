@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # counts a motif (arg1) with overlaps in a fasta file (arg2)
 import sys
 from Bio.Seq import Seq

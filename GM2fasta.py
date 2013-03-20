@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### GeneMark default dna output to fasta
 ### example :
 ### bash$ ~/bin/MetaGeneMark_linux64/gmhmmp -d  -m ~/bin/MetaGeneMark_linux64/MetaGeneMark_v1.mod E1.I36.clust1.fasta -o E1.I36.clust1.dna.gff

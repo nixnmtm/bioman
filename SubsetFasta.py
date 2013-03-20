@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### extracts sequences from a fasta file (arg 1)
 ### whose id is in the IDs file (arg 2)
 

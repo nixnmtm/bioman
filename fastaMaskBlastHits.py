@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### renvoit une partition du fichier fasta d'origine en deux fichiers fasta
 ### le premier avec les sequences qui ont un hit >= evalue (blast tableau)
 ### le deuxieme avec les autres

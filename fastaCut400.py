@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### Script pour Joseph
 #	prend en entree un fichier fasta
 #	renvoit un fichier fasta contenant les sequences coupees en fragment de 400nt, decalees toutes les 100 nucleotides et

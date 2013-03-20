@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### cut a fasta query (arg1) in "nbPart" (arg3)
 ### subFasta files and launches a blast programm (arg4)
 ### vs the bank (arg2) for each subfasta and then

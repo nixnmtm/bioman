@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ### ecrit un fichier texte avec la taille de chaque cluster
 ### exemple : ~/cdhitClusterSizes.py monfichier.clstr
 

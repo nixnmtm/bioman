@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # counts all dinucleotides in a DNA fasta file
 import sys
 from Bio.Seq import Seq
