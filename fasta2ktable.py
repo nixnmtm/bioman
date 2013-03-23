@@ -40,7 +40,7 @@ def makeKmerArray(screedb,ksize,normalize):
 	"""
 	ktable = khmer.new_ktable(ksize)
 	knames=[]
-	print str(ksize) + "-mer",
+	print str(ksize) + "-mer" + sep,
 	for i in range(0, ktable.n_entries()):
 		knames.append(ktable.reverse_hash(i))
 	print sep.join(knames)

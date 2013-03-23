@@ -12,6 +12,7 @@ esom input file (.lrn). Moreover, it removes columns which contains 0 only.
 parser.add_argument("ktable", help="a ktable file")
 parser.add_argument("-s", "--separator", default = "\t", help="the separator to make the output table, default is <tab>")
 parser.add_argument("-n", "--name", default = False, help="writes seqnames and kmer names in separeted files")
+parser.add_argument("-t", "--transform", default = "sqrt", help="transform kmer frequencies, square-root is the default")
 args = parser.parse_args()
 
 ktable = args.ktable
@@ -21,6 +22,8 @@ kt = pd.DataFrame.from_csv(ktable, sep='\t', header=0)
 
 ## removing columns with 0 only
 ktsub = kt[kt.columns[(kt != 0).any()]]
+if args.transform=='sqrt':
+	ktsub = ktsub.apply(np.sqrt)
 
 ## writing the .lrn file
 n = len(ktsub.index)
@@ -37,15 +40,16 @@ with open (out, 'w') as lrn:
     lrn.write('% m '+str(m) + '\n')
     lrn.write('% '+ sep.join(s) + '\n')
     lrn.write('% '+ sep.join(ktsub.columns) + '\n')
-ktsub.to_csv(out, sep=sep, header=False, index=True, mode='a')
+ktsub.to_csv(out, sep=sep, header=False, index=False, mode='a')
 
 
 ## optional
-if args.name==True:
+if args.name:
 	## writing rows in file
 	with open (ktable+".names", 'w') as frows:
-	    for row in ktsub.index:
-		frows.write(row+"\n")
+    		frows.write('% n '+str(n) + '\n')
+		for id,key in zip(ktsub.index, keys):
+			frows.write(str(key) + sep + str(id))
 
 	## writing columns in file
 	with open (ktable+".kmernames", 'w') as fcols:

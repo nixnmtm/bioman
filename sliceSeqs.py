@@ -29,7 +29,7 @@ def makeSlices(screedb,outlen):
 		seqname = record.name
 		i = 1
 		for piece in splitSlices(str(record.sequence)):
-			print ">"+seqname + " #" + str(i) , str(len(piece)+1) + "bp"
+			print ">"+seqname + "#" + str(i) + str(len(piece)+1) + "bp"
 			print piece
 			i = i + 1
 
