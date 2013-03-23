@@ -36,8 +36,8 @@ ktsub.insert(0,"key",keys)
 out = ktable + '.lrn'
 with open (out, 'w') as lrn:
     lrn.write('# lrn esom file generated using "ktable2esom.py '+ ktable + '"\n')
-    lrn.write('% n '+str(n) + '\n')
-    lrn.write('% m '+str(m) + '\n')
+    lrn.write('% '+str(n) + '\n')
+    lrn.write('% '+str(m) + '\n')
     lrn.write('% '+ sep.join(s) + '\n')
     lrn.write('% '+ sep.join(ktsub.columns) + '\n')
 ktsub.to_csv(out, sep=sep, header=False, index=False, mode='a')
@@ -47,7 +47,7 @@ ktsub.to_csv(out, sep=sep, header=False, index=False, mode='a')
 if args.name:
 	## writing rows in file
 	with open (ktable+".names", 'w') as frows:
-    		frows.write('% n '+str(n) + '\n')
+    		frows.write('% '+str(n) + '\n')
 		for id,key in zip(ktsub.index, keys):
 			frows.write(str(key) + sep + str(id) +'\n')
 
