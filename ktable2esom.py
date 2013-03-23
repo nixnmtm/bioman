@@ -49,7 +49,7 @@ if args.name:
 	with open (ktable+".names", 'w') as frows:
     		frows.write('% n '+str(n) + '\n')
 		for id,key in zip(ktsub.index, keys):
-			frows.write(str(key) + sep + str(id))
+			frows.write(str(key) + sep + str(id) +'\n')
 
 	## writing columns in file
 	with open (ktable+".kmernames", 'w') as fcols:
