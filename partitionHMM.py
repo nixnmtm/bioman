@@ -29,18 +29,18 @@ end=re.compile(r"//")
 
 
 if nhf:
-	with open(hmmfile, 'r') as modelFile:
-		nbh=0
-		while True:
-        	try:
-            	line = modelFile.next()
-            	if end.match(line):
-                	nbh=nbh+1
-        	except StopIteration:
-        		print hmmfile, " contains ", str(nbh), " models
-        		nbhmm=nbh/nhf
-            	break
-            	
+    with open(hmmfile, 'r') as modelFile:
+        nbh=0
+        while True:
+            try:
+                line = modelFile.next()
+                if end.match(line):
+                    nbh=nbh+1
+            except StopIteration:
+                print hmmfile, " contains ", str(nbh), " models"
+                nbhmm=nbh/nhf
+                break
+                
 
 filenb=1
 nf=0
@@ -57,7 +57,7 @@ with open(hmmfile, 'r') as modelFile:
             break
         if nbh<=nbhmm:
             if nf!=filenb:
-               filename=hmm+'.'+str(filenb)
+               filename=hmmfile+'.'+str(filenb)
                subModelFile = open(filename, 'w')
                nf=nf+1
             subModelFile.write(line)
