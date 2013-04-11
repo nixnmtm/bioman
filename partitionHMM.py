@@ -5,9 +5,12 @@ import sys
 import re
 import argparse
 
-parser = argparse.ArgumentParser(description="Screen a file (arg 1) for words in mapping file (arg2) column 1 and add after a chosen separator (default is <tab>) the text written in the other columns (or null value if nothing)")
-parser.add_argument("hmmfile", help="the file that should be completed")
-parser.add_argument("-n", "--nb_hmm", default=2000, help="Number of HMM per new file")
+parser = argparse.ArgumentParser(description="""
+splits a HMMer v.3.0 file file into several pieces
+of a chosen amount of HMM models
+""")
+parser.add_argument("hmmfile", help="the HMMer v.3.0 file to break")
+parser.add_argument("-n", "--nb_hmm", default=5000, help="Number of HMM per new file")
 args = parser.parse_args()
 
 
