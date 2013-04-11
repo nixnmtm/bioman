@@ -18,13 +18,29 @@ args = parser.parse_args()
 
 hmmfile = args.hmmfile
 nbhmm = args.nb_hmm
-
+nhf = args.nb_hmmfiles
 
 # I don't use the start re but it works
 #start=re.compile(r"HMMER3\/b\ \[3\.0\ \|\ March\ 2010\]")
 
 # I use the end instead
 end=re.compile(r"//")
+
+
+
+if nhf:
+	with open(hmmfile, 'r') as modelFile:
+		nbh=0
+		while True:
+        	try:
+            	line = modelFile.next()
+            	if end.match(line):
+                	nbh=nbh+1
+        	except StopIteration:
+        		print hmmfile, " contains ", str(nbh), " models
+        		nbhmm=nbh/nhf
+            	break
+            	
 
 filenb=1
 nf=0
