@@ -18,7 +18,7 @@ args = parser.parse_args()
 
 hmmfile = args.hmmfile
 nbhmm = args.nb_hmm
-nhf = args.nb_hmmfiles
+nhf = int(args.nb_hmmfiles)
 
 # I don't use the start re but it works
 #start=re.compile(r"HMMER3\/b\ \[3\.0\ \|\ March\ 2010\]")
