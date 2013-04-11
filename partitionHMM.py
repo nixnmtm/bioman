@@ -10,12 +10,15 @@ splits a HMMer v.3.0 file file into several pieces
 of a chosen amount of HMM models
 """)
 parser.add_argument("hmmfile", help="the HMMer v.3.0 file to break")
-parser.add_argument("-n", "--nb_hmm", default=5000, help="Number of HMM per new file")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-n", "--nb_hmm", help="Number of HMM per new file")
+group.add_argument("-nf", "--nb_hmmfiles", default=10, help="Number of HMM files")
 args = parser.parse_args()
 
 
 hmmfile = args.hmmfile
 nbhmm = args.nb_hmm
+
 
 # I don't use the start re but it works
 #start=re.compile(r"HMMER3\/b\ \[3\.0\ \|\ March\ 2010\]")
