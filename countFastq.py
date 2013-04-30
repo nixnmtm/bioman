@@ -60,6 +60,7 @@ with open(args.fastq,"r") as fq:
             nbResidues += r.seqLen()
         except StopIteration:
             meanLen=nbResidues/nbSeqs
+            print args.fastq
             print "sequences -- residues -- mean sequence length"
             print nbSeqs,"--",nbResidues,"--", meanLen
             print
