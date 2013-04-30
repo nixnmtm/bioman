@@ -64,4 +64,5 @@ with open(args.fastq,"r") as fq:
             print "sequences -- residues -- mean sequence length"
             print nbSeqs,"--",nbResidues,"--", meanLen
             print
+            break
 
