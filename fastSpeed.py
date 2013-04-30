@@ -73,10 +73,10 @@ class SeqCollection(collections.OrderedDict):
 		pass	
 
 def fastqIterOnce(fastqhandle):
-	h = fastqhandle.readline()
-	s = fastqhandle.readline()
-	fastqhandle.readline()
-	q = fastqhandle.readline()
+	h = fastqhandle.next()
+	s = fastqhandle.next()
+	fastqhandle.next()
+	q = fastqhandle.next()
 	return FastqRecord(h,s,q)
 	
 def parseHeader(rawHeader):
