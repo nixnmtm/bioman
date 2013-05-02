@@ -130,7 +130,7 @@ def fasta2dict(fastafile):
 
 def printFastaDict(fasta2dict):
 	for i,j in fasta2dict.items():
-		print '>' + i + ' ' + j[0] + '\n' + j[1]
+		print '>' + i + ' ' + j[0] + '\n' + j[1],
 
 
 def writeFastaDict(fasta2dict,outfile):
