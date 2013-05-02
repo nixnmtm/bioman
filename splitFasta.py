@@ -4,6 +4,7 @@
 import string
 import sys
 import argparse
+import os
 
 parser = argparse.ArgumentParser(description="""
 split a fasta file in "nbpart" chunks
@@ -44,7 +45,7 @@ def splitfasta(fastafile, nbpart, nbtotal):
     
         for part in xrange(nbpart-mod):
             nbseq=0
-            faname=fastafile + "." + str(part+1)
+            faname=os.path.basename(fastafile) + "." + str(part+1)
             with open(faname,"w") as sfa:
                 while nbseq<nbSeqsPerFile:
                     try:
@@ -64,7 +65,7 @@ def splitfasta(fastafile, nbpart, nbtotal):
               
         #last file if modulo is not 0:
         if mod==1:
-            faname=fastafile + "." + str(nbpart)
+            faname=os.path.basename(fastafile) + "." + str(nbpart)
             with open(faname,"w") as sfa:
                 sfa.write(sid)
                 for line in fa:
