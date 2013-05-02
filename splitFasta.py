@@ -10,6 +10,7 @@ split a fasta file in "nbpart" chunks
 """)
 parser.add_argument("fasta", help="the file that should be split")
 parser.add_argument("n", type=int, help="the number of subsets requested")
+args = parser.parse_args()
 
 def main():
 	splitfasta(args.fasta,args.n,countSeqs(args.fasta))
