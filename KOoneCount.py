@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+from argparse import RawTextHelpFormatter
 import sys
 
 parser = argparse.ArgumentParser(description="""
@@ -20,8 +21,7 @@ KO:K00131	3.33
 KO:K00135	3.33
 KO:K00224	1
 
-
-""")
+""", formatter_class=RawTextHelpFormatter)
 parser.add_argument("rawKOcount", help="File with 'raw' KO counts as showed in example 1")
 args = parser.parse_args()
 
@@ -41,5 +41,5 @@ with open(args.rawKOcount, 'r') as KOfile:
                 
 
 for [KO,nb] in nmap.items():
-	print KO,nb
+	print KO,'{0:.2f}'.format(nb)
 
