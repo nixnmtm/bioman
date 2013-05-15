@@ -25,9 +25,9 @@ except IOError, e:
 bestHit=Hits.readline()
 maxscore=float(bestHit.split()[col])
 query=bestHit.split()[0]
-hits = Hits.readlines()
+#hits = Hits.readlines()
 
-for hit in hits:
+for hit in Hits:
 	hitSplit=hit.split()
 	curScore=float(hitSplit[col])
 	#print minscore, maxscore, curScore
