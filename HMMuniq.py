@@ -52,7 +52,9 @@ compFiles = [r+'/'+f for f in f1]
 def main():
 	if mode==True:
 		modelfilter(compFiles)
+		print "Running in 'model' mode"
 	else:
+		print "Running in 'checksum' mode"
 		CHKSUMfilter(compFiles)
 
 ### Model mode
