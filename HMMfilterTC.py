@@ -50,10 +50,10 @@ def TCfilter(files, cutoff):
 			TC = line.split()[1]
 			if TC=="------":
 				fileinput.nextfile()
-			else TC=float(TC)
-			if TC>cutoff:
+			else: TC=float(TC)
+			if TC<cutoff:
 				shutil.copy(fileinput.filename(),out)
-			else fileinput.nextfile()
+			else: fileinput.nextfile()
 	fileinput.close()
 
 
