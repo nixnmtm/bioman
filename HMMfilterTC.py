@@ -8,18 +8,18 @@ from argparse import RawTextHelpFormatter
 import hashlib
 
 parser = argparse.ArgumentParser(description="""
-Copy HMM models with a Trusted Cutoff superior to a specified treshold (-t) 
+Copy HMM models with a Trusted Cutoff superior to a specified threshold (-t) 
 from a source folder (where models are split, i.e. 1 file => 1 model) to a
 destination folder
 """, formatter_class=RawTextHelpFormatter)
 parser.add_argument("source", help="the folder of split HMMs")
 parser.add_argument("destination", help="folder to copy 'TC pass' HMM")
-parser.add_argument("-t", "--treshold", default=float(250), help="TC treshold")
+parser.add_argument("-t", "--threshold", default=float(1000), help="TC threshold, default = 1000")
 args = parser.parse_args()
 
 splitHMMpath = args.source
 out = args.destination
-TCcut = args.treshold
+TCcut = args.threshold
 
 
 ## verify / create destination folder
