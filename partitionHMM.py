@@ -60,6 +60,8 @@ with open(hmmfile, 'r') as modelFile:
                filename=hmmfile+'.'+str(filenb)
                subModelFile = open(filename, 'w')
                nf=nf+1
+               if nf!=1: 
+                  subModelFile.write("HMMER3/b [3.0 | March 2010]\n")
             subModelFile.write(line)
             if end.match(line):
                 nbh=nbh+1
