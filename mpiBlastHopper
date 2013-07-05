@@ -3,7 +3,7 @@
 ### subFasta files and launches a blast+ program (arg3)
 ### vs the bank (arg2) for each subfasta and then
 ### concatenates the tab delimited blast results in
-### one file. You can add any additional blastall option in the
+### one file. You can add any additional blast+ option in the
 ### arg4 with quotes like this : "-evalue 0.001 -word_size 5"
 
 import string
