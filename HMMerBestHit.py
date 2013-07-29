@@ -21,16 +21,19 @@ try:
 except IOError, e:
 	print "HMM output file not found or unreadable: ",HMMERres
 	pass
-	
-bestHit=Hits.readline()
-maxscore=float(bestHit.split()[col])
-query=bestHit.split()[0]
-#hits = Hits.readlines()
+
+while True:
+	bestHit=Hits.readline()
+	if not bestHit.startswith("#"):	
+		maxscore=float(bestHit.split()[col])
+		query=bestHit.split()[0]
+		break
 
 for hit in Hits:
-	hitSplit=hit.split()
+	if not hit.startswith("#"):
+		hitSplit=hit.split()
+	else: continue
 	curScore=float(hitSplit[col])
-	#print minscore, maxscore, curScore
 	if curScore >= minscore:
 		if query!=hitSplit[0]:
 			if float(bestHit.split()[col]) >= minscore :
