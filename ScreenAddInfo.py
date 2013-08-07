@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser(description="Screen a file (arg 1) for words in
 parser.add_argument("infile", help="the file that should be completed")
 parser.add_argument("mapfile", help="the mapping table used to add information")
 parser.add_argument("-s", "--separator", default="\t", help="the separator used to add the complement information, default is <tab>")
+parser.add_argument("-s2", "--separator2", default=", ", help="the separator used to combine several complement information, default is ', '")
 parser.add_argument("-n", "--null", default="NA", help="the 'null' value, default is 'NA'")
 args = parser.parse_args()
 
@@ -19,6 +20,7 @@ args = parser.parse_args()
 anyfile = args.infile
 ListOfIds = args.mapfile
 sep = args.separator
+sep2 = args.separator2
 navalue = args.null
 
 try:
@@ -54,7 +56,7 @@ for ligne in lignes:
 				description.append(str(mappingIndex[mot]))
 	if not description:
 		description.append(navalue)
-	print ligne.strip() + sep + ", ".join(description)
+	print ligne.strip() + sep + sep2.join(description)
 
 handle.close()
 
