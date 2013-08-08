@@ -48,7 +48,7 @@ for couple in IDs:
 	elif mappingIndex[c1]==c2:
 		pass
 	else:
-		mappingIndex[c1]=str(mappingIndex[c1]) +","+c2
+		mappingIndex[c1]=str(mappingIndex[c1]) + sep2 +c2
 		# print c1,mappingIndex[c1]
 
 
@@ -58,11 +58,10 @@ lignes = handle.readlines()
 for ligne in lignes:
 	description = []
 	#for mot in (re.findall(r'[\w.:]+',ligne)):
-	for mot in re.split('[|,\t]',ligne.strip()):
-	#	print mot
+	for mot in re.split('[|\t]',ligne.strip()):
 		if mot in mappingIndex:
 			if mappingIndex[mot]:
-				description.append(str(mappingIndex[mot]))
+				description.append(mappingIndex[mot])
 	if not description:
 		description.append(navalue)
 	print ligne.strip() + sep + sep2.join(description)
