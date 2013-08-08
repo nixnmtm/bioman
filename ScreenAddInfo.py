@@ -22,7 +22,7 @@ anyfile = args.infile
 ListOfIds = args.mapfile
 sep = args.separator
 sep2 = args.separator2
-m = args.mapseparator
+m = args.mapseparator.decode('string-escape')
 #print m
 navalue = args.null
 
