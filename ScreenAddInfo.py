@@ -58,7 +58,7 @@ lignes = handle.readlines()
 for ligne in lignes:
 	description = []
 	#for mot in (re.findall(r'[\w.:]+',ligne)):
-	for mot in re.split('[,\t]',ligne.strip()):
+	for mot in re.split('[|,\t]',ligne.strip()):
 	#	print mot
 		if mot in mappingIndex:
 			if mappingIndex[mot]:
