@@ -13,6 +13,7 @@ parser.add_argument("infile", help="the file that should be completed")
 parser.add_argument("mapfile", help="the mapping table used to add information")
 parser.add_argument("-s", "--separator", default="\t", help="the separator used to add the complement information, default is <tab>")
 parser.add_argument("-s2", "--separator2", default=", ", help="the separator used to combine several complement information, default is ', '")
+parser.add_argument("-mapsep", "--mapseparator", default=None, help="the separator used in the mapfile, default is whitespace and <tab>")
 parser.add_argument("-n", "--null", default="NA", help="the 'null' value, default is 'NA'")
 args = parser.parse_args()
 
@@ -21,6 +22,8 @@ anyfile = args.infile
 ListOfIds = args.mapfile
 sep = args.separator
 sep2 = args.separator2
+m = args.mapseparator
+#print m
 navalue = args.null
 
 try:
@@ -33,9 +36,10 @@ except IOError, e:
 IDs = ids.readlines()
 mappingIndex={}
 for couple in IDs:
-	c1=couple.split()[0]
-	c2=" ".join(couple.split()[1:])
-	# print c1,c2
+	c=couple.strip()
+	c1=c.split(m)[0]
+	c2=" ".join(c.split(m)[1:])
+	#print c1,"||",c2
 	if c1 not in mappingIndex:
 		mappingIndex[c1]=c2
 	elif mappingIndex[c1]==c2:
@@ -50,7 +54,9 @@ lignes = handle.readlines()
 
 for ligne in lignes:
 	description = []
-	for mot in (re.findall(r'[\w.:]+',ligne)):
+	#for mot in (re.findall(r'[\w.:]+',ligne)):
+	for mot in re.split('[,\t]',ligne.strip()):
+	#	print mot
 		if mot in mappingIndex:
 			if mappingIndex[mot]:
 				description.append(str(mappingIndex[mot]))
