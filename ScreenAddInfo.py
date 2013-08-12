@@ -56,14 +56,14 @@ handle = open(anyfile)
 lignes = handle.readlines()
 
 for ligne in lignes:
-	description = []
+	description = set()
 	#for mot in (re.findall(r'[\w.:]+',ligne)):
 	for mot in re.split('[|\t]',ligne.strip()):
 		if mot in mappingIndex:
 			if mappingIndex[mot]:
-				description.append(mappingIndex[mot])
+				description.add(mappingIndex[mot])
 	if not description:
-		description.append(navalue)
+		description.add(navalue)
 	print ligne.strip() + sep + sep2.join(description)
 
 handle.close()
