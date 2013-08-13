@@ -91,13 +91,47 @@ def parseHeader(rawHeader):
 	return sID, sDEF
 
 
+def fasta2list(fastafile):
+	"""
+        reads a fasta file and return a list
+        of (ID, description, seq) tuples. This allows
+	header duplicates
+        """
+        handle = open(fastafile,'r')
+
+        seqs = []
+
+        seq_id = handle.next()
+        while (seq_id[0]!=">"):
+                seq_id = handle.next()
+        while True:
+                try:
+                        seq = handle.next().strip()
+                        line = handle.next()
+                        while (line[0]!=">"):
+                                seq = seq+line.strip()
+                                line = handle.next()
+                        sid,sdef = parseHeader(seq_id)
+                        seqs.append((sid,sdef,seq))
+                        seq_id = line # last loop
+                except StopIteration:
+                        break
+        # last line
+        if line[0]!=">":
+                seq = seq+line.strip()
+        sid,sdef = parseHeader(seq_id)
+        seqs.append((sid,sdef,seq))
+
+        handle.close()
+
+        return seqs
 	
 def fasta2dict(fastafile):
 	"""
 	reads a fasta file and return a dict
 	in which keys are sequence IDs, and
 	values are a tuple of description and
-	actual sequence
+	actual sequence. This forbids ID duplicates
 	"""
 	handle = open(fastafile,'r')
 
@@ -136,6 +170,14 @@ def printFastaDict(fasta2dict):
 def writeFastaDict(fasta2dict,outfile):
 	for i,j in fasta2dict.items():
 		outfile.write('>' + i + ' ' + j[0] + '\n' + j[1])
+
+def printFastaList(fasta2list):
+        for i in fasta2list:
+		print '>' + i[0] + ' ' + i[1] + '\n' + i[2]
+
+def writeFastaList(fasta2list, outfile):
+        for i in fasta2list:
+		outfile.write('>' + i[0] + ' ' + i[1] + '\n' + i[2])
 
 def formatseq(seq,linelength):
 	"""
