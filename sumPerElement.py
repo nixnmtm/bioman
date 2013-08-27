@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# input file col 1 is a numerci value
-# col2 is an ID 
+# input file col 1 is an ID
+# col2 is a numeric value
 
 import string
 import sys
@@ -15,18 +15,18 @@ except IOError, e:
 	pass
 	
 bestHit=Hits.readline()
-query=bestHit.split()[1]
-tot=float(bestHit.split()[0])
+query=bestHit.split()[0]
+tot=float(bestHit.split()[1])
 
 hits = Hits.readlines()
 
 for hit in hits:
 	hitSplit=hit.split()
-	if query!=hitSplit[1]:
+	if query!=hitSplit[0]:
 		print query, str(tot)[:8]
-		query=hitSplit[1]
-		tot=float(bestHit.split()[0])
+		query=hitSplit[0]
+		tot=float(bestHit.split()[1])
 	else:
-		tot=tot+float(bestHit.split()[0])
+		tot=tot+float(bestHit.split()[1])
 Hits.close()
 
