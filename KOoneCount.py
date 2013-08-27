@@ -22,8 +22,9 @@ KO:K00135	3.33
 KO:K00224	1
 
 """, formatter_class=RawTextHelpFormatter)
-parser.add_argument("rawKOcount", help="File with 'raw' KO counts as showed in example 1,
-	for instance, a countEachElement.py output")
+parser.add_argument("rawKOcount", help="""
+	File with 'raw' KO counts as showed in example 1,
+	for instance, a countEachElement.py output""")
 args = parser.parse_args()
 
 nmap=dict()
