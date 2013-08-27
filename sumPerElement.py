@@ -25,8 +25,10 @@ for hit in hits:
 	if query!=hitSplit[0]:
 		print query, str(tot)[:8]
 		query=hitSplit[0]
-		tot=float(bestHit.split()[1])
+		tot=float(hitSplit[1])
 	else:
-		tot=tot+float(bestHit.split()[1])
+		tot=float(tot) + float(hitSplit[1])
+
+print query, str(tot)[:8]
 Hits.close()
 
