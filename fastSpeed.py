@@ -62,6 +62,26 @@ class FastqRecord:
 	def toFasta(self):
 		return '>' + self.head[1:].strip() + '\n' + self.seq
 
+
+        def toQual(self, encoding=enc):
+                aP33="""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ"""
+                aSolexa=""";<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefgh"""
+                qdict={}
+                q=0
+                if encoding=="P33":
+                        for i in aP33:
+                            qdict[i]=str(q)
+                            q+=1
+                elif encoding=="illumina":
+                        for i in aSolexa:
+                            qdict[i]=str(q)
+                            q+=1
+                        qdict["B"]="0"
+                qual=[]
+                for i in self.qual:
+                        qual.append(qdict[i])
+                return '>' + self.head[1:].strip() + '\n' + ' '.join(qual)
+
 	def is_nuc(self):
 		pass
 
