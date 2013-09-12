@@ -27,7 +27,7 @@ class FastaRecord:
 
 	def gc(self):
 		return round((100 * ((self.seq.count('G') +
-					self.seq.count('C'))) /
+				self.seq.count('C'))) /
 				len(self.seq)),
 				2)
 
@@ -40,7 +40,6 @@ class FastqRecord:
 	collection of functions intended to process a fastq entry
 	as fast as possible
 	"""
-
 	def __init__(self, header, sequence, qual):
 		self.head = header.strip()
 		self.seq = sequence.strip().upper()
@@ -63,24 +62,24 @@ class FastqRecord:
 		return '>' + self.head[1:].strip() + '\n' + self.seq
 
 
-        def toQual(self, encoding=enc):
-                aP33="""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ"""
-                aSolexa=""";<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefgh"""
-                qdict={}
-                q=0
-                if encoding=="P33":
-                        for i in aP33:
-                            qdict[i]=str(q)
-                            q+=1
-                elif encoding=="illumina":
-                        for i in aSolexa:
-                            qdict[i]=str(q)
-                            q+=1
-                        qdict["B"]="0"
-                qual=[]
-                for i in self.qual:
-                        qual.append(qdict[i])
-                return '>' + self.head[1:].strip() + '\n' + ' '.join(qual)
+	def toQual(self, encoding):
+		aP33="""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ"""
+		aSolexa=""";<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefgh"""
+		qdict={}
+		q=0
+		if encoding=="P33":
+			for i in aP33:
+				qdict[i]=str(q)
+				q+=1
+		elif encoding=="solexa":
+			for i in aSolexa:
+				qdict[i]=str(q)
+				q+=1
+			qdict["B"]="0"
+		qual=[]
+		for i in self.qual:
+			qual.append(qdict[i])
+		return '>' + self.head[1:].strip() + '\n' + ' '.join(qual)
 
 	def is_nuc(self):
 		pass
