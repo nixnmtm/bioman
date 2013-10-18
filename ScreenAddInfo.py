@@ -35,7 +35,11 @@ except IOError, e:
 	print "file not found or unreadable: ",ListOfIds
 	pass
 	
-
+"""
+This part of the program reads and parses the ID list.
+It makes a dict with first element on each line as a
+key, and next element(s) as value
+"""
 IDs = ids.readlines()
 mappingIndex={}
 for couple in IDs:
@@ -48,25 +52,26 @@ for couple in IDs:
 	elif mappingIndex[c1]==c2:
 		pass
 	else:
-		mappingIndex[c1]=str(mappingIndex[c1]) + sep2 +c2
+		mappingIndex[c1]=str(mappingIndex[c1]) + sep2 + c2
 		# print c1,mappingIndex[c1]
 
-
-handle = open(anyfile)
-lignes = handle.readlines()
-
-for ligne in lignes:
-	description = set()
-	#for mot in (re.findall(r'[\w.:]+',ligne)):
-	for mot in re.split('[|\t]',ligne.strip()):
-		if mot in mappingIndex:
-			if mappingIndex[mot]:
-				description.add(mappingIndex[mot])
-	if not description:
-		description.add(navalue)
-	print ligne.strip() + sep + sep2.join(description)
-
-handle.close()
+"""
+Once 1st step is done, the program reads the file to complete,
+for each words it finds into each line, looks up in dict keys
+and add the concatenated values at the end of the correspon-
+ding line.
+"""
+with open(anyfile, 'r') as f1:
+	for ligne in f1:
+		description = set()
+		#for mot in (re.findall(r'[\w.:]+',ligne)):
+		for mot in re.split('[|\t]',ligne.strip()):
+			if mot in mappingIndex:
+				if mappingIndex[mot]:
+					description.add(mappingIndex[mot])
+		if not description:
+			description.add(navalue)
+		print ligne.strip() + sep + sep2.join(description)
 
 
 
