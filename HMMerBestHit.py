@@ -44,7 +44,8 @@ for hit in Hits:
 		elif maxscore<=float(hitSplit[col]):
 			bestHit=hit
 			maxscore=float(hitSplit[col])
-if bestHit != null:
-	print bestHit
+if bestHit is not None:
+	print bestHit,
+
 Hits.close()
 
